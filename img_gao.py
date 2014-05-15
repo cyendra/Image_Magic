@@ -5,7 +5,6 @@ Created on 2014年5月15日
 @author: 常峰
 '''
 from PIL import Image
-import sys
 
 maxLen = 100.0
 fontSize = 7
@@ -26,11 +25,15 @@ def clearWindow():
     raw_input()
 
 def gao():
+    print u"读取图片文件：%s\n" % imgname
     img = Image.open(imgname)
     width, height = img.size
+    print u"图片的宽为：%s，高为：%s\n" % (width, height)
     rate = maxLen / max(width, height)
+    print u"缩放比例为：%s\n" % rate
     width = int(rate * width)
-    height = int(rate * width)
+    height = int(rate * height)
+    print u"缩小后的图片宽为：%s，高为：%s\n" % (width, height)
     img = img.resize((width, height))
     pixel = img.load()
     color = "MNHQ$OC?7>!:-;. "
