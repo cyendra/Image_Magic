@@ -12,13 +12,26 @@ imgname = "r.jpg"
 
 def getIn():
     print u"请输入图像文件名："
-    imgname = raw_input()
+    try:
+        imgname = raw_input()
+    except:
+        imgname = "r.jpg"
+    print u"请输入最大字符画高/宽："
+    try:
+        maxLen = input()
+    except:
+        maxLen = 100.0
+    print u"请输入字体："
+    try:
+        fontSize = input()
+    except:
+        fontSize = 7
 
 def clearWindow():
     print u" " * 100;
     print   u"""
   *****************************************************************************
-    
+                        ASCII码绘图
   *****************************************************************************
 
                         轻点回车即可开始运行"""
@@ -26,7 +39,11 @@ def clearWindow():
 
 def gao():
     print u"读取图片文件：%s\n" % imgname
-    img = Image.open(imgname)
+    try:
+        img = Image.open(imgname)
+    except:
+        print u"读取图片出错"
+        return
     width, height = img.size
     print u"图片的宽为：%s，高为：%s\n" % (width, height)
     rate = maxLen / max(width, height)
