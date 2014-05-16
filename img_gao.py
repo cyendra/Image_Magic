@@ -55,11 +55,14 @@ def gao():
     pixel = img.load()
     color = "MNHQ$OC?7>!:-;. "
     string = ""
+    string2 = ""
     for h in xrange(height):
         for w in xrange(width):
             rgb = pixel[w, h]
+            string2 += "<span style=\"color:rgb" + str(rgb) + ";\">▇</span>"
             string += color[int(sum(rgb)/3.0/256.0*16)]
         string += "\n"
+        string2 += "\n"
     template = """<!DOCTYPE HTML>
     <html>
         <head>
@@ -84,6 +87,10 @@ def gao():
 """
     html = template % (fontSize, string)
     f = open("out.html","w")
+    f.write(html)
+    f.close()
+    html = template % (fontSize, string2)
+    f = open("out2.html","w")
     f.write(html)
     f.close()
     #sys.stdout.write(html)
